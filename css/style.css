@@ -1,0 +1,25 @@
+body {
+  font-family: 'Lora', serif;
+}
+
+#questionsContainer {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)),
+  url("../img/britain.jpg");
+  background-size: cover; 
+  color: white;
+  padding-bottom: 50px;
+  padding-left: 30px;
+}
+
+.questions {
+  padding-bottom: 10px;
+}
+
+.correct {
+  background-color: green;
+}
+
+.incorrect {
+  background-color: red;
+  color: white;
+}
