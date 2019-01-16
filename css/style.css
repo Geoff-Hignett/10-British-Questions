@@ -1,25 +1,88 @@
 body {
-  font-family: 'Lora', serif;
+  font-family: 'PT Serif', serif;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)),
+  url("../img/britain.jpg");
+  background-size: cover;
+  text-shadow: 3px 3px 10px rgba(0,0,0,1.0);
 }
 
 #questionsContainer {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)),
-  url("../img/britain.jpg");
-  background-size: cover; 
-  color: white;
-  padding-bottom: 50px;
-  padding-left: 30px;
+  color: #fff;
+  padding: 20px; 
+  display: inline-block;
+  margin-top: -30px;
 }
 
 .questions {
   padding-bottom: 10px;
+  max-width: 400px;
 }
 
 .correct {
-  background-color: green;
+  background-color: rgb(35, 189, 35);
 }
 
 .incorrect {
   background-color: red;
-  color: white;
+  color: #fff;
+}
+
+#score {
+  display: inline;
+  padding-left: 30px;
+}
+
+#quoteContainer {
+  color: #fff;
+  display: inline-block;
+  padding-left: 150px;
+  padding-top: 200px;
+  vertical-align: top;
+  font-size: 1.5rem;
+
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+@media (min-width: 1490px){
+  body {
+    padding-left: 75px;
+  }
+
+  .quote {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 1490px) and (min-width:1235px){
+  body {
+    padding-left: 50px;
+  }
+
+  .quote {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 1235px) and (min-width:1080px){
+  .quote {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 1080px){
+  body {
+    padding-left: 75px;
+  }
+  .quote {
+    display: none;
+  }
+}
+
+@media (max-width: 700px){
+  body {
+    padding: 25px;
+  }
 }

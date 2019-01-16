@@ -1,23 +1,7 @@
 $(document).ready(function () {
-
 });
-
+// Store questions and answers in array
 const quiz = [
-  { question: "What is the county town of Cornwall?", answer: "Truro" },
-  { question: "What is the county town of Cumberland?", answer: "Carlisle" },
-  { question: "What is the county town of Essex?", answer: "Chelmsford" },
-  { question: "What is the county town of Shropshire?", answer: "Shrewsbury" },
-  { question: "What is the county town of Hampshire?", answer: "Winchester" },
-  { question: "What is the county town of Berkshire?", answer: "Reading" },
-  { question: "What is the county town of Buckinghamshire?", answer: "Aylesbury" },
-  { question: "What is the county town of Devon?", answer: "Exeter" },
-  { question: "What is the county town of Kent?", answer: "Maidstone" },
-  { question: "What is the county town of Northumberland?", answer: "Alnwick" },
-  { question: "What is the county town of Rutland?", answer: "Oakham" },
-  { question: "What is the county town of Somerset?", answer: "Taunton" },
-  { question: "What is the county town of Suffolk?", answer: "Ipswitch" },
-  { question: "What is the county town of Surrey?", answer: "Guildford" },
-  { question: "What is the county town of Wiltshire?", answer: "Trowbridge" },
   { question: "What is the county town of Surrey?", answer: "Guildford" },
   { question: "What year was the Battle of Agincourt?", answer: "1415" },
   { question: "What year did the First World War begin?", answer: "1914" },
@@ -42,7 +26,35 @@ const quiz = [
   { question: "What year did David Beckham score from the halfway line?", answer: "1996" },
   { question: "What British oil and gas giant has its headquarters in the Netherlands?", answer: "Shell" },
   { question: "What British bank was founded by Sir Thomas Sutherland in British Hong Kong?", answer: "HSBC" },
-  { question: "What year did Eric Liddel win an olympic gold medal?", answer: "1924" },
+  { question: "Jesy Nelson and Jade Thirwell are members of which band?", answer: "Little Mix" },
+  { question: "John Paul Jones and John Bonham were members of which band?", answer: "Led Zeppelin" },
+  { question: "Thom Yorke and Colin Greenwood are members of which band?", answer: "Radiohead" },
+  { question: "Who presented a 2017 revival of The Price is Right ?", answer: "Alan Carr" },
+  { question: "Which Loose Women panelist has their own show on BBC Radio Scotland?", answer: "Kaye Adams" },
+  { question: "Which tabloid ended its Page 3 feature in 2015?", answer: "The Sun" },
+  { question: "What surname did Ronnie and Roxy share in Eastenders?", answer: "Mitchell" },
+  { question: "Eric Pollard and Lisa Dingle are characters in which soap?", answer: "Emmerdale" },
+  { question: "Which TV judge shakes contestants' hands after eating food he heavily approves of?", answer: "Paul Hollywood" },
+  { question: "What soap opera is Rita Tanner a character in?", answer: "Coronation Street" },
+  { question: "Which footballer was Cheryl married to?", answer: "Ashley Cole" },
+  { question: "The UK is found in which continent?", answer: "Europe" },
+  { question: "What is the highest mountain in England called?", answer: "Scafell Pike" },
+  { question: "Which river is the longest in Wales?", answer: "Tywi" },
+  { question: "What is the term for a non-magical person in Harry Potter?", answer: "Muggle" },
+  { question: "What carbohydrate is traditionally eaten with fish in Britain? (plural)", answer: "Chips" },
+  { question: "What is another word for \"banger\" in \"bangers and mash\"?", answer: "Sausage" },
+  { question: "What five-letter word is the currency of Britain?", answer: "Pound" },
+  { question: "How many British monarchs were crowned in the 19th century? (use digit)", answer: "3" },
+  { question: "Which British physicist appeared on The Big Bang Theory?", answer: "Stephen Hawking" },
+  { question: "Benedict Cumberbatch played which World War II cryptanalyst in a 2014 film?", answer: "Alan Turing" },
+  { question: "Who wrote \"The Selfish Gene\" (1976)?", answer: "Richard Dawkins" },
+  { question: "What is the name of the BBC children's news programme started in 1972?", answer: "Newsround" },
+  { question: "Which Harry Potter actress has won 3 Olivier Awards for Best Actress in a Musical?", answer: "Imelda Staunton" },
+  { question: "Which former Strictly Come Dancing contestant is married to Billy Connolly?", answer: "Pamela Stevenson" },
+  { question: "Which New Labour Prime Minister followed \"Third Way\" economic programmes?", answer: "Tony Blair" },
+  { question: "What country was Edward VIII in when he died?", answer: "France" },
+  { question: "Which Australian city shares its name with a former queen consort of the UK?", answer: "Adelaide" },
+  { question: "Is Britain in the Northern Hemisphere?", answer: "Yes" },
 ];
 
 const questionCount = 10;
@@ -50,17 +62,22 @@ let answerBank = [];
 
 window.onload = function () {
   let str = "<h1>10 British Questions</h1>";
+  // Generate quiz
   for (let i = 0; i < questionCount; i++) {
+    // Randomize question selection
     let rand = Math.floor(Math.random() * quiz.length);
+    // Store used questions in new array to locate answers
     answerBank.push(quiz[rand].answer);
     str += '<div class="questions">' + (i + 1) + " " +
       quiz[rand].question + "<br>" + '<input type="text" id="r'
       + i + '">' + "<br>" + '</div>';
+    // Remove used questions to avoid duplicates
     quiz.splice(rand, 1);
   }
-  str += '<br><INPUT value="CHECK SCORE" type="button" onclick="getScore()">';
-  str += '<INPUT id="score" type="text" size="8">';
-  str += '<h3 id="summary"></h3>';
+  str += '<br><INPUT value="CHECK SCORE" id="results" type="button" onclick="getScore()">';
+  str += '<br><INPUT value="CHANGE QUESTIONS" id="reload" type="button" onclick="test()">';
+  // str += '<h2 id="score"></h2>';
+  // str += '<h3 id="summary"></h3>';
   document.getElementById("questionsContainer").innerHTML = str;
 }
 
@@ -68,23 +85,29 @@ function getScore() {
   let correct, given, advice;
   let sum = 0;
   const total = questionCount;
+  // Collect given answers
   const sel = document.getElementById("questionsContainer").getElementsByTagName("input");
 
   for (let i = 0; i < sel.length - 2; i++) {
+    // Compare given answers with answer bank array
     correct = answerBank[i];
     given = sel[i].value;
     if (!given || given.toLowerCase() !== correct.toLowerCase()) {
+      // Highlight incorrect answers
       $(sel[i]).addClass("incorrect");
+      // Show correct answers instead of the attempted incorrect answers
+      $(sel[i]).val(correct);
 
     }
     if (given && correct) {
       if (correct.toLowerCase() == given.toLowerCase()) {
         sum++;
+        // Highlight correct answers
         $(sel[i]).addClass("correct");
       }
     }
-
   }
+  // Assign grade
   if (sum < 4) {
     advice = "You should study more.";
   }
@@ -97,8 +120,14 @@ function getScore() {
   if (sum == 10) {
     advice = "What can one say? You are a genius."
   }
-  document.getElementById("score").value = ((sum / total) * 100).toFixed(0) + "%";
+  // Show results
+  document.getElementById("score").innerHTML = ((sum / total) * 100).toFixed(0) + "%";
   document.getElementById("summary").innerHTML = advice;
+  // Disable results button
+  $("#results").attr("disabled", "disabled");
+}
+function test() {
+  location.reload();
 }
 
 
