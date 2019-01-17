@@ -54,7 +54,13 @@ const quiz = [
   { question: "Which New Labour Prime Minister followed \"Third Way\" economic programmes?", answer: "Tony Blair" },
   { question: "What country was Edward VIII in when he died?", answer: "France" },
   { question: "Which Australian city shares its name with a former queen consort of the UK?", answer: "Adelaide" },
-  { question: "Is Britain in the Northern Hemisphere?", answer: "Yes" },
+  { question: "Mr Jaggers is a prominent lawyer in which Dickens novel?", answer: "Great Expectations" },
+  { question: "Whose debut novel \"White Teeth\" became a best seller?", answer: "Zadie Smith" },
+  { question: "Which Victorian novelist married Emma Gifford in 1874?", answer: "Thomas Hardy" },
+  { question: "Which English writer was played by Nicole Kidman in The Hours?", answer: "Virginia Woolf" },
+  { question: "Which Scottish soup is made of smoked haddock, potato and onion?", answer: "Cullen skink" },
+  { question: "What is the name for a winery that produces meads?", answer: "meadery" },
+  { question: "Which Oliver Twist character shares their name with a defunct garage duo? (2 words)", answer: "Artful Dodger" }
 ];
 
 const questionCount = 10;
@@ -74,10 +80,11 @@ window.onload = function () {
     // Remove used questions to avoid duplicates
     quiz.splice(rand, 1);
   }
+  str += '<h3 id="summary"></h3>';
   str += '<br><INPUT value="CHECK SCORE" id="results" type="button" onclick="getScore()">';
   str += '<br><INPUT value="CHANGE QUESTIONS" id="reload" type="button" onclick="test()">';
-  // str += '<h2 id="score"></h2>';
-  // str += '<h3 id="summary"></h3>';
+  str += '<h2 id="score"></h2>';
+
   document.getElementById("questionsContainer").innerHTML = str;
 }
 
@@ -125,6 +132,10 @@ function getScore() {
   document.getElementById("summary").innerHTML = advice;
   // Disable results button
   $("#results").attr("disabled", "disabled");
+  // Realign change questions button
+  const changeButton = document.getElementById("reload");
+  $(changeButton).addClass("realign");
+
 }
 function test() {
   location.reload();

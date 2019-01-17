@@ -35,8 +35,6 @@ body {
 #quoteContainer {
   color: #fff;
   display: inline-block;
-  padding-left: 150px;
-  padding-top: 200px;
   vertical-align: top;
   font-size: 1.5rem;
 
@@ -46,43 +44,120 @@ h1 {
   font-size: 2.5rem;
 }
 
-@media (min-width: 1490px){
-  body {
-    padding-left: 75px;
+#summary {
+  margin: 0;
+} 
+
+.quote {
+  display: none;
+}
+
+#results {
+  width: 150px;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  background: blue;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+}
+#results:hover {
+  background: red;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
   }
 
-  .quote {
-    font-size: 4rem;
+  #results:disabled {
+    display: none;
+  }
+
+
+#reload {
+  width: 150px;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  background: red;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+}
+
+#reload:hover {
+  background: blue;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
+  }
+
+@media (min-width: 500px) and (max-width: 992px){
+  body {
+    text-align: center;
+  }
+
+  #score {
+    padding-left: 0;
+    position: relative;
+    left: 30px;
+  }
+  .realign {
+    position: relative;
+    left: 16px;
   }
 }
 
-@media (max-width: 1490px) and (min-width:1235px){
+@media (min-width: 992px){
+  .quote {
+    display: block;
+    padding-top: 250px;
+  }
   body {
     padding-left: 50px;
   }
+}
 
+@media (min-width: 992px) and (max-width: 1096px){
   .quote {
     font-size: 3rem;
+    padding-left: 110px;
   }
 }
 
-@media (max-width: 1235px) and (min-width:1080px){
+@media (min-width: 1096px) and (max-width: 1230px){
   .quote {
-    font-size: 2.5rem;
+    padding-left: 150px;
+    font-size: 3.5rem;
   }
 }
 
-@media (max-width: 1080px){
-  body {
-    padding-left: 75px;
-  }
+@media (min-width: 1230px) and (max-width: 1530px){
   .quote {
-    display: none;
+    padding-left: 150px;
+    font-size: 4.5rem;
   }
 }
 
-@media (max-width: 700px){
-  body {
-    padding: 25px;
+
+@media (min-width: 1530px){
+  .quote {
+    padding-left: 300px;
+    font-size: 6rem;
   }
 }
+
+
+
+
+
+
+
+
+
