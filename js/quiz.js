@@ -67,7 +67,7 @@ const questionCount = 10;
 let answerBank = [];
 
 window.onload = function () {
-  let str = "<h1>10 British Questions</h1>";
+  let str = '<h1>10 British Questions<span><img class="img-control" src="img/union.jpg"></h1>';
   // Generate quiz
   for (let i = 0; i < questionCount; i++) {
     // Randomize question selection
@@ -75,7 +75,7 @@ window.onload = function () {
     // Store used questions in new array to locate answers
     answerBank.push(quiz[rand].answer);
     str += '<div class="questions">' + (i + 1) + " " +
-      quiz[rand].question + "<br>" + '<input type="text" id="r'
+      quiz[rand].question + "<br>" + '<input type="text" class="answers" id="r'
       + i + '">' + "<br>" + '</div>';
     // Remove used questions to avoid duplicates
     quiz.splice(rand, 1);
