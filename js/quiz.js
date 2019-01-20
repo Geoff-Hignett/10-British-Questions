@@ -84,6 +84,8 @@ window.onload = function () {
   str += '<br><INPUT value="CHECK SCORE" id="results" type="button" onclick="getScore()">';
   str += '<br><INPUT value="CHANGE QUESTIONS" id="reload" type="button" onclick="test()">';
   str += '<h2 id="score"></h2>';
+  str += '<br><h3 id="author">Built by '
+  str += '<a href="https://geoff-hignett.co.uk" class="author">Geoff Hignett</h3></a>'
 
   document.getElementById("questionsContainer").innerHTML = str;
 }
@@ -116,7 +118,7 @@ function getScore() {
   }
   // Assign grade
   if (sum < 4) {
-    advice = "You should study more.";
+    advice = "Perhaps you should study more.";
   }
   if (sum > 3 && sum < 7) {
     advice = "A respectable effort. Some room for improvement."
@@ -127,9 +129,11 @@ function getScore() {
   if (sum == 10) {
     advice = "What can one say? You are a genius."
   }
-  // Show results
+  // Show results and author
   document.getElementById("score").innerHTML = ((sum / total) * 100).toFixed(0) + "%";
   document.getElementById("summary").innerHTML = advice;
+  $("#author").show();
+
   // Disable results button
   $("#results").attr("disabled", "disabled");
   // Realign change questions button
