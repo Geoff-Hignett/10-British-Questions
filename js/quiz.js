@@ -80,14 +80,24 @@ window.onload = function () {
     // Remove used questions to avoid duplicates
     quiz.splice(rand, 1);
   }
+  // Generate buttons and feedback content
   str += '<h3 id="summary"></h3>';
   str += '<br><INPUT value="CHECK SCORE" id="results" type="button" onclick="getScore()">';
   str += '<br><INPUT value="CHANGE QUESTIONS" id="reload" type="button" onclick="test()">';
-  str += '<h2 id="score"></h2>';
-  str += '<br><h3 id="author">Built by '
-  str += '<a href="https://geoff-hignett.co.uk" class="author">Geoff Hignett</h3></a>'
+  str += '<br><h3 id="author">by '
+  str += '<a href="https://geoff-hignett.co.uk" class="author">Geoff Hignett</h3></a>';
 
   document.getElementById("questionsContainer").innerHTML = str;
+  // Generate alternative buttons and feedback content for large screens
+  let str2 = '<h2 class="quote"><i>"what it says<br> on the tin..."</i></h2>';
+  str2 += '<h2 id="score2"></h2>';
+  str2 += '<h3 id="summary2"></h3>';
+  str2 += '<br><INPUT value="CHECK SCORE" id="results2" type="button" onclick="getScore()">';
+  str2 += '<br><INPUT value="CHANGE QUESTIONS" id="reload2" type="button" onclick="test()">';
+  str2 += '<br><h3 id="author2">by '
+  str2 += '<a href="https://geoff-hignett.co.uk" class="author2">Geoff Hignett</h3></a>';
+
+  document.getElementById("quoteContainer").innerHTML = str2;
 }
 
 function getScore() {
@@ -96,7 +106,6 @@ function getScore() {
   const total = questionCount;
   // Collect given answers
   const sel = document.getElementById("questionsContainer").getElementsByTagName("input");
-
   for (let i = 0; i < sel.length - 2; i++) {
     // Compare given answers with answer bank array
     correct = answerBank[i];
@@ -118,28 +127,25 @@ function getScore() {
   }
   // Assign grade
   if (sum < 4) {
-    advice = "Perhaps you should study more.";
+    advice = "Time to study?";
   }
   if (sum > 3 && sum < 7) {
-    advice = "A respectable effort. Some room for improvement."
+    advice = "Not bad."
   }
   if (sum > 6 && sum < 10) {
-    advice = "A very good score."
+    advice = "A very good score!"
   }
   if (sum == 10) {
-    advice = "What can one say? You are a genius."
+    advice = "You are a genius!"
   }
-  // Show results and author
-  document.getElementById("score").innerHTML = ((sum / total) * 100).toFixed(0) + "%";
-  document.getElementById("summary").innerHTML = advice;
-  $("#author").show();
+  // Show results and feedback
+  document.getElementById("score2").innerHTML = ((sum / total) * 100).toFixed(0) + "%";
+  document.getElementById("summary").innerHTML = ((sum / total) * 100).toFixed(0) + "% " + advice;
+  document.getElementById("summary2").innerHTML = advice;
 
   // Disable results button
   $("#results").attr("disabled", "disabled");
-  // Realign change questions button
-  const changeButton = document.getElementById("reload");
-  $(changeButton).addClass("realign");
-
+  $("#results2").attr("disabled", "disabled");
 }
 function test() {
   location.reload();
