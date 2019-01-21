@@ -241,12 +241,10 @@ h1 {
   #score {
     font-size: 1.3rem;
   }
-  
-  #r9 {
-    margin-bottom: -500px;
-  }
 
-  
+  .questions {
+    width: 780px;
+  }
 }
 
 
