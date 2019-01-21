@@ -93,7 +93,7 @@ window.onload = function () {
   str2 += '<h2 id="score2"></h2>';
   str2 += '<h3 id="summary2"></h3>';
   str2 += '<br><INPUT value="CHECK SCORE" id="results2" type="button" onclick="getScore()">';
-  str2 += '<br><INPUT value="CHANGE QUESTIONS" id="reload2" type="button" onclick="test()">';
+  str2 += '<br><INPUT value="CHANGE QUESTIONS" id="reload2" type="button" onclick="restart()">';
   str2 += '<br><h3 id="author2">by '
   str2 += '<a href="https://geoff-hignett.co.uk" class="author2">Geoff Hignett</h3></a>';
 
@@ -147,8 +147,9 @@ function getScore() {
   $("#results").attr("disabled", "disabled");
   $("#results2").attr("disabled", "disabled");
 }
-function test() {
+function restart() {
   location.reload();
+  $(document).scrollTop(0);
 }
 
 
