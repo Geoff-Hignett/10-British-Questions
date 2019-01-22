@@ -3,7 +3,7 @@ $(document).ready(function () {
 // Store questions and answers in array
 const quiz = [
   { question: "What is the county town of Surrey?", answer: "Guildford" },
-  { question: "What year was the Battle of Agincourt?", answer: "1415" },
+  { question: "What 1415 battle was won by Henry V?", answer: "Agincourt" },
   { question: "What year did the First World War begin?", answer: "1914" },
   { question: "What year did the Second World War begin?", answer: "1939" },
   { question: "What year did the First World War end?", answer: "1918" },
@@ -19,14 +19,14 @@ const quiz = [
   { question: "What was the most common first name of Henry VIII\'s wives?", answer: "Catherine" },
   { question: "What year did Steven Gerrard win the UEFA champions league?", answer: "2005" },
   { question: "What year did England win the FIFA World Cup?", answer: "1966" },
-  { question: "What year did Denise Lewis win an olympic gold medal?", answer: "2000" },
+  { question: "What city did Denise Lewis win an olympic gold medal in at the 2000 Olympics?", answer: "Sydney" },
   { question: "What year did Andy Murray win his first Wimbledon?", answer: "2013" },
-  { question: "What year did Virginia Wade win Wimbledon?", answer: "1977" },
-  { question: "What year did Jonathan Edwards break two triple jump records in consecutive jumps?", answer: "1995" },
+  { question: "Who was the last British female to win Wimbledon in 1977?", answer: "Virginia Wade" },
+  { question: "Which triple jumper broke two world records in consecutive jumps in 1995?", answer: "Jonathan Edwards" },
   { question: "What year did David Beckham score from the halfway line?", answer: "1996" },
   { question: "What British oil and gas giant has its headquarters in the Netherlands?", answer: "Shell" },
   { question: "What British bank was founded by Sir Thomas Sutherland in British Hong Kong?", answer: "HSBC" },
-  { question: "Jesy Nelson and Jade Thirwell are members of which band?", answer: "Little Mix" },
+  { question: "Jesy Nelson and Jade Thirwall are members of which band?", answer: "Little Mix" },
   { question: "John Paul Jones and John Bonham were members of which band?", answer: "Led Zeppelin" },
   { question: "Thom Yorke and Colin Greenwood are members of which band?", answer: "Radiohead" },
   { question: "Who presented a 2017 revival of The Price is Right ?", answer: "Alan Carr" },
@@ -39,7 +39,7 @@ const quiz = [
   { question: "Which footballer was Cheryl married to?", answer: "Ashley Cole" },
   { question: "The UK is found in which continent?", answer: "Europe" },
   { question: "What is the highest mountain in England called?", answer: "Scafell Pike" },
-  { question: "Which river is the longest in Wales?", answer: "Tywi" },
+  { question: "Which river is the longest in Britain?", answer: "Severn" },
   { question: "What is the term for a non-magical person in Harry Potter?", answer: "Muggle" },
   { question: "What carbohydrate is traditionally eaten with fish in Britain? (plural)", answer: "Chips" },
   { question: "What is another word for \"banger\" in \"bangers and mash\"?", answer: "Sausage" },
@@ -47,7 +47,7 @@ const quiz = [
   { question: "How many British monarchs were crowned in the 19th century? (use digit)", answer: "3" },
   { question: "Which British physicist appeared on The Big Bang Theory?", answer: "Stephen Hawking" },
   { question: "Benedict Cumberbatch played which World War II cryptanalyst in a 2014 film?", answer: "Alan Turing" },
-  { question: "Who wrote \"The Selfish Gene\" (1976)?", answer: "Richard Dawkins" },
+  { question: "Which athiest wrote \"The Selfish Gene\" (1976)?", answer: "Richard Dawkins" },
   { question: "What is the name of the BBC children's news programme started in 1972?", answer: "Newsround" },
   { question: "Which Harry Potter actress has won 3 Olivier Awards for Best Actress in a Musical?", answer: "Imelda Staunton" },
   { question: "Which former Strictly Come Dancing contestant is married to Billy Connolly?", answer: "Pamela Stevenson" },
@@ -60,7 +60,17 @@ const quiz = [
   { question: "Which English writer was played by Nicole Kidman in The Hours?", answer: "Virginia Woolf" },
   { question: "Which Scottish soup is made of smoked haddock, potato and onion?", answer: "Cullen skink" },
   { question: "What is the name for a winery that produces meads?", answer: "meadery" },
-  { question: "Which Oliver Twist character shares their name with a defunct garage duo? (2 words)", answer: "Artful Dodger" }
+  { question: "Which Oliver Twist character shares their name with a defunct garage duo? (2 words)", answer: "Artful Dodger" },
+  { question: "What is the capital of Scotland?", answer: "Edinburgh" },
+  { question: "Which former Top Gear presenter punched Piers Morgan in 2004?", answer: "Jeremy Clarkson" },
+  { question: "Which fruit is Isaac Newton associated with?", answer: "Apple" },
+  { question: "What is the first name of the Queen?", answer: "Elizabeth" },
+  { question: "What sport did Tim Henman and Greg Rusedski play for Great Britain?", answer: "Tennis" },
+  { question: "What confectionery was produced by Willy Wonka in a Roald Dahl book?", answer: "Chocolate" },
+  { question: "Which motorway encircles almost all of Greater London?", answer: "M25" },
+  { question: "Trafalgar Square is found in which capital city?", answer: "London" },
+  { question: "Snowdonia and the Principality Stadium are found in which UK country?", answer: "Wales" },
+  { question: "Which four letter English city shares its name with something found in a bathroom?", answer: "Bath" }
 ];
 
 const questionCount = 10;
@@ -83,7 +93,7 @@ window.onload = function () {
   // Generate buttons and feedback content
   str += '<h3 id="summary"></h3>';
   str += '<br><INPUT value="CHECK SCORE" id="results" type="button" onclick="getScore()">';
-  str += '<br><INPUT value="CHANGE QUESTIONS" id="reload" type="button" onclick="test()">';
+  str += '<br><INPUT value="CHANGE QUESTIONS" id="reload" type="button" onclick="restart()">';
   str += '<br><h3 id="author">by '
   str += '<a href="https://geoff-hignett.co.uk" class="author">Geoff Hignett</h3></a>';
 
@@ -148,7 +158,8 @@ function getScore() {
   $("#results2").attr("disabled", "disabled");
 }
 function restart() {
-  location.reload();
+  // Reload page and scroll to top
+  document.location.reload();
   $(document).scrollTop(0);
 }
 

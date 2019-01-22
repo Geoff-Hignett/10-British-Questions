@@ -70,6 +70,7 @@ h1 {
   border-radius: 5px;
   display: inline-block;
   border: none;
+  -webkit-appearance: none;
 }
 
 #reload {
@@ -88,6 +89,7 @@ h1 {
   border-radius: 5px;
   display: inline-block;
   border: none;
+  -webkit-appearance: none;
 }
 
 #summary,
